@@ -26,7 +26,7 @@ let getWords = () => {
 getWords();
 
 
-//using several timeouts again
+//using several timeouts again example from review
 let getWords = () => {
     console.log('instant');
     setTimeout(() => {
@@ -68,19 +68,41 @@ let orderMeSomeFood = () => {
     return new Promise((resolve, reject) => {
         if (lunchTime == true) {
             let meal = {
-                lunch: 'chicken nuggets', 
-                drink: 'juice'};
+                lunch: 'chicken nuggets',
+                drink: 'juice'
+            };
             Promise.resolve()
-            .then(() => {
-                (console.log(meal));
-            })
+                .then(() => {
+                    (console.log(meal));
+                })
         } else {
             Promise.reject()
-            .catch(() => {
-                let err = 'nothing';
-                throw new Error(err);
-            })
+                .catch(() => {
+                    let err = 'nothing';
+                    throw new Error(err);
+                })
         }
     });
 };
 orderMeSomeFood();
+
+//different promise example from review
+let isItLunchTime = false;
+const orderMeSomeFood = (lunchTime) => {
+    return new Promise((resolve, reject) => {
+        if (lunchTime) {
+            let lunchObj = {
+                lunch: 'burger',
+                drink: 'soda'
+            }
+            resolve(lunchObj);
+        } else {
+            let err = new Error('no');
+            reject(err);
+        }
+    })
+}
+
+orderMeSomeFood(isItLunchTime)
+    .then(pizza => console.log(pizza))
+    .catch(pizza => console.log(pizza))
