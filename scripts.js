@@ -46,7 +46,7 @@ getWords();
 let countDown = (num, callback) => (
 
     setTimeout(() => {
-        if (num > 0) {
+        if (num > 1) {
             console.log(num);
             countDown(num - 1, callback);
         } else {
@@ -59,10 +59,7 @@ let countDown = (num, callback) => (
 let done = () => {
     console.log(`Job's done!`);
 };
-
 countDown(5, done);
-
-
 
 //Promises 
 let lunchTime = true;
@@ -70,13 +67,16 @@ let lunchTime = true;
 let orderMeSomeFood = () => {
     return new Promise((resolve, reject) => {
         if (lunchTime == true) {
-            let meal = { lunch: 'chicken nuggets', drink: 'water' };
-            Promise.resolve().then(() => {
+            let meal = {
+                lunch: 'chicken nuggets', 
+                drink: 'juice'};
+            Promise.resolve()
+            .then(() => {
                 (console.log(meal));
             })
-
         } else {
-            Promise.reject().catch(() => {
+            Promise.reject()
+            .catch(() => {
                 let err = 'nothing';
                 throw new Error(err);
             })
